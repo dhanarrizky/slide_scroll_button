@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* box-sizing:border-box
+used to divide the size into boxes, if the height and width have been determined,
+ even if the padding and margins are changed, it will still follow the size of the
+  box that has been determined or the size of the height and width. */
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f1f4fd;
+}
+
+.container {
+    max-width: 1200px;
+    width: 95%;
+}
+
+.slider-wrapper {
+    position: relative;
+}
+
+.slider-wrapper .slide-button {
+    position: absolute;
+    top: 50%;
+    height: 50px;
+    width: 50px;
+    color: #fff;
+    background-color: #000;
+    font-size: 2.2rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.slider-wrapper .slide-button:hover  {
+    background: #444;
+}
+
+/* CSS property transform: translateY(-50%); used to shift an element vertically
+ up or down by 50% of the element's height. It is often used in combination with 
+ other properties to help position an element vertically in the center of its parent element or viewport. */
+
+/* If the class and ID are attached then they are considered to be one part of one element
+for example, if one element has class xy ​​and id xy in one element, then simply write it using ".xy#xy" */
+
+.slider-wrapper  .slide-button#prev-slide {
+    left: -20px;
+    display: none;
+}
+
+.slider-wrapper .slide-button#next-slide {
+    right: -20px;
+}
+
+.slider-wrapper .image-list {
+    display: grid;
+    gap: 18px;
+    font-size: 0;
+    margin-bottom: 30px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    grid-template-columns: repeat(10, 1fr); 
+}
+
+/* grid-template-columns:repeat(10,1fr) // to divide the grid size into 10 equal parts of size 1fr */
+
+.slider-wrapper .image-list::-webkit-scrollbar {
+    display: none;
+}
+
+.slider-wrapper .image-list .img-item {
+    height: 400px;
+    width: 325px;
+    object-fit: cover;
+}
+
+.container .slider-scrollbar {
+    height: 24px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.slider-scrollbar .scrollbar-track {
+    height: 2px;
+    width: 100%;
+    background: #ccc;
+    position: relative;
+    border-radius: 4px;
+}
+
+.slider-scrollbar:hover .scrollbar-track {
+    height: 4px;
+}
+
+/* "slider-scrollbar" is hovering but "scrollbar-track" is changing */
+
+.slider-scrollbar .scrollbar-thumb {
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    background: #000;
+    border-radius: inherit;
+    cursor: grab;
+}
+
+.slider-scrollbar .scrollbar-thumb:active {
+    cursor: grabbing;
+    height: 8px;
+    top: -2px;
+}
+
+/* position:absolute still has to be wrapped using position:relative
+ so that it is not scattered everywhere, in essence it will become a 
+ child or be bound by the element that has the relative position itself */
+
+ /* border-radius:inherit
+he will follow the radius of his "perent" element */
+
+/* "cursor:grap" here is used when the user's cursor is above it, it will change to a hand and when clicked it will change to a holding hand. */
+
+.slider-scrollbar .scrollbar-thumb::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -10px;
+    bottom: -10px;
+}
+
+/* A "pseudo-element" is a pseudo-element in css that is used to style certain parts of an element, or to insert content that is not present in the html markup. 
+"Pseudo-elements" do not appear in an HTML document directly, but they can be styled with CSS to add effects or content to a web page */
+
+/* Examples of Pseudo-elements */
+/* 1. ::before
+    used to insert content before the targeted element's content */
+/* 2. ::after
+    used to insert content next to the content of the targeted element */
+/* 3. ::first-line
+    used to style the first row of block elements */
+/* 4. ::selection
+    used to organize sections selected by the user */
